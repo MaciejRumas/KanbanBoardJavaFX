@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f2feff" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CanbanBoard.Controller">
+   <children>
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="619.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="closeMenuItem" mnemonicParsing="false" onAction="#pressCloseMenuItem" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="About">
+            <items>
+              <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" onAction="#pressAboutMenuItem" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Label layoutX="23.0" layoutY="54.0" prefHeight="17.0" prefWidth="75.0" text="TO DO" textAlignment="CENTER" />
+      <Label layoutX="225.0" layoutY="54.0" prefHeight="17.0" prefWidth="96.0" text="DOING" textAlignment="CENTER" />
+      <Label layoutX="429.0" layoutY="54.0" prefHeight="17.0" prefWidth="96.0" text="DONE" textAlignment="CENTER" />
+      <Button fx:id="addTaskButton" layoutX="197.0" layoutY="340.0" mnemonicParsing="false" onAction="#pressAddTaskButton" prefHeight="38.0" prefWidth="198.0" text="Add new task">
+         <font>
+            <Font name="Calibri Bold" size="20.0" />
+         </font>
+          <graphic>
+              <ImageView>
+                  <image>
+                      <Image url="/CanbanBoard/img/add_image.png" />
+                  </image>
+              </ImageView>
+          </graphic>
+      </Button>
+      <AnchorPane layoutX="23.0" layoutY="75.0" minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="150.0">
+         <children>
+            <ListView fx:id="toDoList" layoutX="-1.0" prefHeight="250.0" prefWidth="150.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="225.0" layoutY="75.0" minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="150.0">
+         <children>
+            <ListView fx:id="doingList" prefHeight="250.0" prefWidth="150.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="429.0" layoutY="75.0" minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="150.0">
+         <children>
+            <ListView fx:id="doneList" prefHeight="250.0" prefWidth="150.0" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="fromToDoToDoing" layoutX="181.0" layoutY="159.0" mnemonicParsing="false" onAction="#shiftFromToDoToDoing" prefHeight="25.0" prefWidth="33.0" text="">
+          <graphic>
+              <ImageView>
+                  <image>
+                      <Image url="/CanbanBoard/img/right_arrow.png" />
+                  </image>
+              </ImageView>
+          </graphic>
+      </Button>
+      <Button fx:id="fromDoingToToDo" layoutX="181.0" layoutY="214.0" mnemonicParsing="false" onAction="#shiftFromDoingToToDo" prefHeight="25.0" prefWidth="33.0" text="">
+          <graphic>
+              <ImageView>
+                  <image>
+                      <Image url="/CanbanBoard/img/left_arrow.png" />
+                  </image>
+              </ImageView>
+          </graphic>
+      </Button>
+      <Button fx:id="fromDoingToDone" layoutX="385.0" layoutY="159.0" mnemonicParsing="false" onAction="#shiftFromDoingToDone" prefHeight="25.0" prefWidth="33.0" text="">
+          <graphic>
+              <ImageView>
+                  <image>
+                      <Image url="/CanbanBoard/img/right_arrow.png" />
+                  </image>
+              </ImageView>
+          </graphic>
+      </Button>
+      <Button fx:id="fromDoneToDoing" layoutX="385.0" layoutY="214.0" mnemonicParsing="false" onAction="#shiftFromDoneToDoing" prefHeight="25.0" prefWidth="33.0" text="">
+          <graphic>
+              <ImageView>
+                  <image>
+                      <Image url="/CanbanBoard/img/left_arrow.png" />
+                  </image>
+              </ImageView>
+          </graphic>
+      </Button>
+   </children>
+</AnchorPane>

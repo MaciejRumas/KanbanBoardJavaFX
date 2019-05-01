@@ -30,7 +30,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage pStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("mainStage.fxml"));
         pStage.setTitle("Kanban Board");
         pStage.setScene(new Scene(root, 600, 400));
         pStage.show();

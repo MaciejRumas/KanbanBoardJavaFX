@@ -1,27 +1,11 @@
 package CanbanBoard;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Task {
+public class Task implements Serializable {
     private String taskName;
     private LocalDate expDate;
-
-    public void setTaskName(String taskName) {
-        this.taskName = taskName;
-    }
-
-    public void setExpDate(LocalDate expDate) {
-        this.expDate = expDate;
-    }
-
-    public void setPriority(Priority priority) {
-        this.priority = priority;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     private Priority priority;
     private String description;
 
@@ -55,5 +39,21 @@ public class Task {
 
     public String getDescription() {
         return description;
+    }
+
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
+
+    public void setExpDate(LocalDate expDate) {
+        this.expDate = expDate;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

@@ -18,6 +18,20 @@
           <Menu mnemonicParsing="false" text="File">
             <items>
               <MenuItem fx:id="closeMenuItem" mnemonicParsing="false" onAction="#pressCloseMenuItem" text="Close" />
+                  <MenuItem fx:id="saveMenuItem" mnemonicParsing="false" onAction="#pressSaveMenuItem" text="Save" />
+                  <MenuItem fx:id="openMenuItem" mnemonicParsing="false" onAction="#pressOpenMenuItem" text="Open" />
+                  <Menu mnemonicParsing="false" text="Export">
+                    <items>
+                        <MenuItem fx:id="exportCsvMenuItem" mnemonicParsing="false" onAction="#pressExportCsvMenuItem" text="CSV" />
+                      <MenuItem fx:id="exportJsonMenuItem" mnemonicParsing="false" onAction="#pressExportJsonMenuItem" text="JSON" />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Import">
+                    <items>
+                        <MenuItem fx:id="importCsvMenuItem" mnemonicParsing="false" onAction="#pressImportCsvMenuItem" text="CSV" />
+                        <MenuItem fx:id="importJsonMenuItem" mnemonicParsing="false" onAction="#pressImportJsonMenuItem" text="JSON" />
+                    </items>
+                  </Menu>
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="About">

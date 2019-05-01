@@ -215,6 +215,8 @@ public class Controller implements Initializable {
                 toDoObservableList = FXCollections.observableArrayList(connectedLists.get(0));
                 doingObservableList = FXCollections.observableArrayList(connectedLists.get(1));
                 doneObservableList = FXCollections.observableArrayList(connectedLists.get(2));
+                actualObservableList = null;
+                selectedTask = null;
 
                 refreshLists();
                 fis.close();
@@ -290,9 +292,10 @@ public class Controller implements Initializable {
 
         if (file != null) {
 
-            toDoObservableList.clear();
-            doingObservableList.clear();
-            doneObservableList.clear();
+            clearLists();
+            actualObservableList = null;
+            selectedTask = null;
+
 
             try {
                 FileReader fileReader = new FileReader(file);
@@ -369,6 +372,10 @@ public class Controller implements Initializable {
         File file = fileChooser.showOpenDialog(Main.getPrimaryStage());
 
         if (file != null) {
+            clearLists();
+            actualObservableList = null;
+            selectedTask = null;
+
             try {
                 JSONParser jsonParser = new JSONParser();
                 FileReader fileReader = new FileReader(file);
@@ -378,10 +385,6 @@ public class Controller implements Initializable {
                 JSONArray toDoJsonArray = (JSONArray) mainObject.get("toDo");
                 JSONArray doingJsonArray = (JSONArray) mainObject.get("doing");
                 JSONArray doneJsonArray = (JSONArray) mainObject.get("done");
-
-                toDoObservableList.clear();
-                doingObservableList.clear();
-                doneObservableList.clear();
 
                 toDoObservableList = addTasksToObservableList(toDoJsonArray);
                 doingObservableList = addTasksToObservableList(doingJsonArray);
@@ -416,11 +419,12 @@ public class Controller implements Initializable {
 
     public void shiftFromDoingToToDo(ActionEvent event) {
         try {
-            if (doingObservableList.size() > 0) {
+            if (doingObservableList.size() > 0 && selectedTask != null && doingObservableList.contains(selectedTask)) {
                 toDoObservableList.add(selectedTask);
                 toDoList.setItems(toDoObservableList);
                 doingObservableList.remove(selectedTaskIndex);
                 doingListView.refresh();
+                selectedTask = null;
             }
         } catch (Exception exception) {
             System.out.println("Exception thrown: " + exception.getMessage());
@@ -429,11 +433,12 @@ public class Controller implements Initializable {
 
     public void shiftFromToDoToDoing(ActionEvent event) {
         try {
-            if (toDoObservableList.size() > 0) {
+            if (toDoObservableList.size() > 0 && selectedTask != null && toDoObservableList.contains(selectedTask)) {
                 doingObservableList.add(selectedTask);
                 doingList.setItems(doingObservableList);
                 toDoObservableList.remove(selectedTaskIndex);
                 toDoListView.refresh();
+                selectedTask = null;
             }
         } catch (Exception exception) {
             System.out.println("Exception thrown: " + exception.getMessage());
@@ -442,11 +447,12 @@ public class Controller implements Initializable {
 
     public void shiftFromDoingToDone(ActionEvent event) {
         try {
-            if (doingObservableList.size() > 0) {
+            if (doingObservableList.size() > 0 && selectedTask != null && doingObservableList.contains(selectedTask)) {
                 doneObservableList.add(selectedTask);
                 doneListView.setItems(doneObservableList);
                 doingObservableList.remove(selectedTaskIndex);
                 doingListView.refresh();
+                selectedTask = null;
             }
         } catch (Exception exception) {
             System.out.println("Exception thrown: " + exception.getMessage());
@@ -455,11 +461,12 @@ public class Controller implements Initializable {
 
     public void shiftFromDoneToDoing(ActionEvent event) {
         try {
-            if (doneObservableList.size() > 0) {
+            if (doneObservableList.size() > 0 && selectedTask != null && doneObservableList.contains(selectedTask)) {
                 doingObservableList.add(selectedTask);
                 doingListView.setItems(doingObservableList);
                 doneObservableList.remove(selectedTaskIndex);
                 doneListView.refresh();
+                selectedTask = null;
             }
         } catch (Exception exception) {
             System.out.println("Exception thrown: " + exception.getMessage());
@@ -474,6 +481,13 @@ public class Controller implements Initializable {
         toDoList.refresh();
         doingListView.refresh();
         doneListView.refresh();
+    }
+
+    private void clearLists(){
+        toDoObservableList.clear();
+        doingObservableList.clear();
+        doneObservableList.clear();
+        actualObservableList.clear();
     }
 
 }

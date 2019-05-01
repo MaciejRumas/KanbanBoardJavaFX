@@ -38,6 +38,8 @@ public class TaskContextMenu extends ContextMenu {
                     Controller.getActualObservableList().remove(Controller.getSelectedTaskIndex());
                     Controller.getActualList().setItems(Controller.getActualObservableList());
                     Controller.getActualList().refresh();
+                    Controller.setSelectedTask(null);
+
                 }
             }
         });
